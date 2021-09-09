@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuPicker">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layerType="hardware"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:foregroundGravity="center"
+            android:outlineProvider="none"
+            android:overScrollMode="always"
+            android:transitionName="appBar"
+            app:title="Cube Assistant Main Menu"
+            app:titleCentered="true" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Note: A RecyclerView can also be used -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <!-- Scrollable content -->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/MainBt"
+                android:layout_width="325dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="32dp"
+                android:text="Timer"
+                android:textSize="24sp"
+                android:transitionName="mainMenu"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/timer"
+                app:iconGravity="textStart"
+                app:iconSize="40dp"
+                app:iconTintMode="src_in"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/scrambleSolve"
+                android:layout_width="325dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="8dp"
+                android:text="2D Cube"
+                android:textSize="24sp"
+                android:transitionName="mainMenu"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/ic_dashboard_black_24dp"
+                app:iconGravity="textStart"
+                app:iconSize="40dp"
+                app:iconTintMode="src_in"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/MainBt" />
+
+            <Button
+                android:id="@+id/CubeBT"
+                android:layout_width="325dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="8dp"
+                android:text="3D Cube"
+                android:textSize="20sp"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/rubiks_icon"
+                app:iconGravity="textStart"
+                app:iconSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrambleSolve" />
+
+            <Button
+                android:id="@+id/Tutorial"
+                android:layout_width="325dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="8dp"
+                android:text="Tutorial"
+                android:textSize="24sp"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/tutorialicon"
+                app:iconGravity="textStart"
+                app:iconSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Camera_Scan" />
+
+            <Button
+                android:id="@+id/Camera_Scan"
+                android:layout_width="325dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="8dp"
+                android:text="Camera"
+                android:textSize="20sp"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/ic_menu_camera"
+                app:iconGravity="textStart"
+                app:iconSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CubeBT" />
+
+            <Button
+                android:id="@+id/darkmodeBT"
+                android:layout_width="325dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="8dp"
+                android:text="Dark Mode"
+                android:textSize="19sp"
+                android:transitionName="darkButton"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/darkmodeicon"
+                app:iconGravity="textStart"
+                app:iconSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Tutorial" />
+
+            <Button
+                android:id="@+id/log_out"
+                android:layout_width="325dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="8dp"
+                android:text="Log out"
+                android:textSize="24sp"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/logout"
+                app:iconGravity="textStart"
+                app:iconSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/about_bt" />
+
+            <Button
+                android:id="@+id/about_bt"
+                android:layout_width="325dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="8dp"
+                android:text="About"
+                android:textSize="20sp"
+                app:cornerRadius="30dp"
+                app:icon="@android:drawable/ic_dialog_info"
+                app:iconGravity="textStart"
+                app:iconSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/darkmodeBT" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

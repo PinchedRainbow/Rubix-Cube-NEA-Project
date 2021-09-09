@@ -1,0 +1,15 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="General Settings" />
+
+    <PreferenceCategory app:title="Dark Mode">
+
+        <SwitchPreferenceCompat
+            android:id="@+id/dark_mode"
+            app:key="dark_mode"
+            app:title="Turn dark mode on" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

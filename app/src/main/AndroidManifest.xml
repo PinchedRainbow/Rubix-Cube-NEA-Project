@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.jawaadianinc.rubixcubesolver">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:installLocation="preferExternal"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.RubixCubeSolver">
+        <activity
+            android:name=".Tutorial_Activity"
+            android:label="@string/title_activity_tutorial"
+            android:theme="@style/Theme.RubixCubeSolver.NoActionBar" />
+        <activity
+            android:name=".SplashScreen"
+            android:label="Cube Assistant"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.RubixCubeSolver">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".CubeRenderer" />
+        <activity
+            android:name=".MenuPicker"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.RubixCubeSolver"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".About"
+            android:label="@string/title_activity_about"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.RubixCubeSolver.NoActionBar" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".SignInActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".MainMenu"
+            android:screenOrientation="portrait" />
+
+
+    </application>
+
+</manifest>
