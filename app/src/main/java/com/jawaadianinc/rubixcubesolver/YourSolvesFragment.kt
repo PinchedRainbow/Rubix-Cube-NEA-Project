@@ -40,20 +40,20 @@ class YourSolvesFragment : Fragment() {
         //3x3 card view
         val allTimes3x3 = databaseTimes.allTimes3x3
         val total = databaseTimes.totalSolves3x3
-        textSolves3x3.text = "Total 3x3: $total\nAverage 3x3: $allTimes3x3"
+        textSolves3x3.text = "Total Solves: $total\nAverage time: $allTimes3x3"
 
         //2x2 card view
         val allTimes2x2 = databaseTimes.allTimes2x2
         val total2x2 = databaseTimes.totalSolves2x2
-        textSolves2x2.text = "Total 2x2: $total2x2\nAverage 2x2: $allTimes2x2"
+        textSolves2x2.text = "Total Solves: $total2x2\nAverage time: $allTimes2x2"
 
         //4x4 card view
         val allTimes4x4 = databaseTimes.allTimes4x4
         val total4x4 = databaseTimes.totalSolves4x4
-        textSolves4x4.text = "Total 4x4: $total4x4\nAverage 4x4: $allTimes4x4"
+        textSolves4x4.text = "Total Solves: $total4x4\nAverage time: $allTimes4x4"
 
         val count = databaseTimes.totalSolves
-        textSolves.text = "Total Solves: $count"
+        textSolves.text = "Overall total solves: $count"
 
         val cardView: CardView = view.findViewById(R.id.card_view)
         val cardView2x2: CardView = view.findViewById(R.id.card_view2x2)

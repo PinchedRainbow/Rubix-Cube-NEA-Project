@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/solution_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context="com.jawaadianinc.rubixcubesolver.MainActivity">
+
+    <TextView
+        android:id="@+id/scramble_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/default_scramble"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/phase_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scramble_view"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/rewind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_chevron_left" />
+
+        <TextView
+            android:id="@+id/phase_view"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:text="@string/initial_phase"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="20dp" />
+
+        <ImageButton
+            android:id="@+id/skip_forward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hapticFeedbackEnabled="true"
+            android:src="@drawable/ic_chevron_right" />
+
+    </LinearLayout>
+
+    <com.jawaadianinc.rubixcubesolver.CubeView
+        android:id="@+id/cube_view"
+        android:layout_width="330dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/phase_switch"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/moves_to_perform_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cube_view"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/moves_to_perform_tag"
+        android:textAllCaps="true" />
+
+    <TextView
+        android:id="@+id/moves_performed_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moves_to_perform_indicator"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/moves_performed_tag"
+        android:textAllCaps="true" />
+
+    <TextView
+        android:id="@+id/moves_to_perform"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/moves_to_perform_indicator"
+        android:layout_alignBottom="@+id/moves_to_perform_indicator"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@+id/moves_to_perform_indicator"
+        android:ellipsize="none"
+        android:fadingEdgeLength="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:maxLines="1"
+        android:requiresFadingEdge="horizontal"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/moves_performed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/moves_performed_indicator"
+        android:layout_alignStart="@+id/moves_to_perform"
+        android:layout_alignBottom="@+id/moves_performed_indicator"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@+id/moves_performed_indicator"
+        android:ellipsize="none"
+        android:fadingEdgeLength="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:maxLines="1"
+        android:requiresFadingEdge="horizontal"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="20dp" />
+
+    <android.widget.SeekBar
+        android:id="@+id/speed_adjuster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/cube_view"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="8dp"
+        android:maxWidth="150dp"
+        android:maxHeight="48dp"
+        android:minWidth="150dp"
+        android:minHeight="48dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_alignTop="@id/speed_adjuster"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toLeftOf="@id/speed_adjuster"
+        android:gravity="center"
+        android:padding="0.5dp"
+        android:text="Speed:" />
+
+</RelativeLayout>

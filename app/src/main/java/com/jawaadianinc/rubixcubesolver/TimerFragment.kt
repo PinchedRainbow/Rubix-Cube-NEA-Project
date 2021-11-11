@@ -101,13 +101,24 @@ class TimerFragment : Fragment() {
         }
 
         timerText.setOnClickListener {
-            if (timerText.text == "0:00:000") {
+//            if (timerText.text == "0:00:000") {
+//                startTimer()
+//                timerText.setTextColor(ContextCompat.getColor(requireContext(), R.color.teal_200))
+//            } else {
+//                stopTimer()
+//                timerText.setTextColor(Color.parseColor(("#5D8832")))
+//            }
+            //VERY OLD insufficient method but imma keep it here as memory
+
+            if (timerText.currentTextColor == Color.parseColor(("#5D8832"))) {
                 startTimer()
                 timerText.setTextColor(ContextCompat.getColor(requireContext(), R.color.teal_200))
             } else {
                 stopTimer()
                 timerText.setTextColor(Color.parseColor(("#5D8832")))
             }
+
+
         }
         var alreadyPlayeed = 0
         val animation3: Animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
@@ -160,7 +171,6 @@ class TimerFragment : Fragment() {
 
     private fun stopTimer() {
         val animation1: Animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
-        val timerText: TextView = view?.findViewById(R.id.timerText) as TextView
         handler?.removeCallbacks(runnable)
 
         val shuffleText: TextView = view?.findViewById(R.id.shuffleText) as TextView
@@ -171,7 +181,7 @@ class TimerFragment : Fragment() {
 
         saveTime()
         shuffle()
-        timerText.text = "0:00:000"
+        //timerText.text = "0:00:000"
         spinner.visibility = View.VISIBLE
 
     }

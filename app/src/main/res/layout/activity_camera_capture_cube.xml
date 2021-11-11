@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jawaadianinc.rubixcubesolver.CaptureCubeActivity">
+
+    <FrameLayout
+        android:id="@+id/camera_preview_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/bottom_bar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary">
+
+        <Spinner
+            android:id="@+id/side_options"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:background="@null"
+            android:paddingRight="4dp" />
+
+        <ImageView
+            android:id="@+id/take_picture"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Take a Picture"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_photo_camera_white" />
+
+        <Button
+            android:id="@+id/solve_cube"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:text="Solve" />
+
+    </RelativeLayout>
+
+
+    <SurfaceView
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:clickable="true">
+
+            <LinearLayout
+                android:id="@+id/instructions_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Instructions"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/toggle_instructions"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:gravity="center"
+                    android:src="@drawable/ic_arrow_drop_down_black" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/instructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:lineSpacingExtra="6dp"
+            android:padding="16dp"
+            android:text="@string/instructions"
+            android:textAlignment="viewStart"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</RelativeLayout>

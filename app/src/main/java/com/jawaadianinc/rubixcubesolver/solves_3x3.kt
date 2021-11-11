@@ -91,7 +91,7 @@ class solves_3x3 : Fragment() {
         val test2 = popupView.findViewById<TextView>(R.id.titleText)
         test2.text = "Solve Time: $timeSolved, Number: $number"
         val textView = popupView.findViewById<TextView>(R.id.H_perm_txt)
-        textView.text = "On $date\nShuffle:\n$shuffle\nCube Type: $typeOfCube"
+        textView.text = "On $date\nShuffle:\n$shuffle\nCube_Original Type: $typeOfCube"
         val buttonEdit: Button = popupView.findViewById(R.id.messageButton)
         buttonEdit.setOnClickListener {
             popupWindow.dismiss()

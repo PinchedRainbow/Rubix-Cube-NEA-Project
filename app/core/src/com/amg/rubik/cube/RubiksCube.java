@@ -1,14 +1,13 @@
-package com.amg.rubik.cube;
-
-import java.security.InvalidParameterException;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.StringTokenizer;
+package com.amg.rubik.cubeOriginal;
 
 import com.amg.rubik.Log;
 import com.amg.rubik.graphics.Axis;
 import com.amg.rubik.graphics.CubeRenderer;
 import com.amg.rubik.graphics.Direction;
+
+import java.security.InvalidParameterException;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -30,13 +29,13 @@ import com.amg.rubik.graphics.Direction;
  * This class handles the rotation and drawing for all cubes.
  *
  * TODO: Some state variables are accessed from the renderer thread and UI thread.
- * This might corrupt the cube due to race condition.
+ * This might corrupt the cubeOriginal due to race condition.
  * The solve, cancel, randomize etc need to be synchronized with the draw function.
  * */
 
 public class RubiksCube extends Cube {
 
-    private static final String tag = "rubik-cube";
+    private static final String tag = "rubik-cubeOriginal";
 
     // Default value for incrementing angle during rotation
     static final float ANGLE_DELTA_SLOW = 2f;
@@ -73,7 +72,7 @@ public class RubiksCube extends Cube {
      * The value can be used to grade the solving speed during manual and automated modes.
      * It doesn't mean much during manual solving right now as the user can invoke machine
      * solving and cancel at the last moment to reset the counter. Once we add
-     * support for autodetecting solved cube during manual rotation, we should
+     * support for autodetecting solved cubeOriginal during manual rotation, we should
      * find a way to use this value in a more meaningful way.
      * */
     int mMoveCount;
@@ -124,7 +123,7 @@ public class RubiksCube extends Cube {
     }
 
     /**
-     * TODO: Serialize and deserialize the cube state
+     * TODO: Serialize and deserialize the cubeOriginal state
      * Implement these two functions
      * */
     public String getColorString() {
@@ -143,7 +142,7 @@ public class RubiksCube extends Cube {
     /**
      * I give up; how did you do it?
      *
-     * 1. Bring the cube to its base state
+     * 1. Bring the cubeOriginal to its base state
      * 2. Apply the moves made during scrambling
      * 3. Create an Algorithm with those moves reversed
      * 4. Start executing the algorithm
@@ -201,7 +200,7 @@ public class RubiksCube extends Cube {
     }
 
     /**
-     * Start scrambling the cube. Random faces will be rotated until stopRandomize is called. This
+     * Start scrambling the cubeOriginal. Random faces will be rotated until stopRandomize is called. This
      * function animates individual rotations.
      *
      * @see public void randomize(int count)
@@ -256,7 +255,7 @@ public class RubiksCube extends Cube {
     private void finishRotation() {
         /**
          * If 90' rotation of a single face is not possible along the given axis, and we are
-         * rotating all layers along that axis, just reorient the cube.
+         * rotating all layers along that axis, just reorient the cubeOriginal.
          * */
         boolean symmetryFlag = isSymmetricAroundAxis(mRotation.axis);
         if (symmetryFlag == false && mRotation.faceCount == getAxisSize(mRotation.axis)) {
@@ -270,7 +269,7 @@ public class RubiksCube extends Cube {
         }
 
         /**
-         * Exclude whole cube rotations from the count
+         * Exclude whole cubeOriginal rotations from the count
          * */
         if (mUndoingFlag == false && mRotation.faceCount != getAxisSize(mRotation.axis)) mMoveCount++;
 
@@ -430,7 +429,7 @@ public class RubiksCube extends Cube {
         if (mRotation.faceCount == axisSize) {
             /**
              * Even if it isn't symmetric, we can do half rotations if
-             * we are rotating the whole cube. @finishRotation takes care of this.
+             * we are rotating the whole cubeOriginal. @finishRotation takes care of this.
              * */
             max_angle = 90f;
         }
@@ -564,7 +563,7 @@ public class RubiksCube extends Cube {
     }
 
     /**
-     * Sets the color of the whole cube
+     * Sets the color of the whole cubeOriginal
      * */
     public void setColor(int color) {
         for (Square sq: mAllSquares) {
@@ -632,7 +631,7 @@ public class RubiksCube extends Cube {
 
     public void reset() {
         if (mState != CubeState.IDLE) {
-            sendMessage("cube is in state " + mState);
+            sendMessage("cubeOriginal is in state " + mState);
             return;
         }
         setColor(FACE_FRONT, COLOR_FRONT);
@@ -654,7 +653,7 @@ public class RubiksCube extends Cube {
     }
 
     /***
-     * - User swipes across the cube for playing.
+     * - User swipes across the cubeOriginal for playing.
      * - Only one layer is rotated at a time.
      * - The layer is identified from the first and last squares touched by the user.
      * - The direction is estimated from the order of these squares.

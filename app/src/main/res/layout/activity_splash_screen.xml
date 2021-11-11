@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/SplashImage"
-        android:layout_width="144dp"
-        android:layout_height="147dp"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,11 +25,12 @@
         android:gravity="center"
         android:text="Cube Assistant"
         android:textColor="@color/purple_500"
-        android:textSize="30sp"
+        android:textSize="40dp"
         android:textStyle="bold"
         android:transitionName="button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SplashImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

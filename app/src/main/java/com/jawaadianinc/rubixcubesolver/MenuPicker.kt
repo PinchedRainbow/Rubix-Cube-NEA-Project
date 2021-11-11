@@ -3,17 +3,21 @@ package com.jawaadianinc.rubixcubesolver
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.analytics.FirebaseAnalytics
 
 
 class MenuPicker : AppCompatActivity() {
+    private var mFirebaseAnalytics: FirebaseAnalytics? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_picker)
+
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
 
         val mainBt: Button = findViewById(R.id.MainBt)
         val cubeBt: Button = findViewById(R.id.CubeBT)
@@ -21,8 +25,9 @@ class MenuPicker : AppCompatActivity() {
         val darkModeBT: Button = findViewById(R.id.darkmodeBT)
         val logout: Button = findViewById(R.id.log_out)
         val tutorial: Button = findViewById(R.id.Tutorial)
-        val cameraScan: Button = findViewById(R.id.Camera_Scan)
-        val scramblkeSolve: Button = findViewById(R.id.scrambleSolve)
+        val twodCube: Button = findViewById(R.id.scrambleSolve)
+        val backupBT: Button = findViewById(R.id.backupBT)
+
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .build()
@@ -34,8 +39,9 @@ class MenuPicker : AppCompatActivity() {
             overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         }
 
-        scramblkeSolve.setOnClickListener {
-            Toast.makeText(this, "COMING SOON", Toast.LENGTH_SHORT).show()
+        twodCube.setOnClickListener {
+            //Toast.makeText(this, "COMING SOON", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
 
@@ -44,10 +50,8 @@ class MenuPicker : AppCompatActivity() {
             overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         }
 
-        cameraScan.setOnClickListener {
-//            startActivity(Intent(this, camera_Scan::class.java))
-//            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
-            Toast.makeText(this, "Coming soon!", Toast.LENGTH_SHORT).show()
+        backupBT.setOnClickListener {
+            startActivity(Intent(this, BackupActivity::class.java))
         }
 
         aboutBt.setOnClickListener {

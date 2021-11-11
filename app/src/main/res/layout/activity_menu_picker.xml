@@ -26,7 +26,7 @@
             android:overScrollMode="always"
             android:transitionName="appBar"
             app:title="Cube Assistant Main Menu"
-            app:titleCentered="true" />
+            app:titleCentered="false" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -69,7 +69,7 @@
                 android:layout_width="325dp"
                 android:layout_height="66dp"
                 android:layout_marginTop="8dp"
-                android:text="2D Cube"
+                android:text="Solver (2D)"
                 android:textSize="24sp"
                 android:transitionName="mainMenu"
                 app:cornerRadius="30dp"
@@ -97,6 +97,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/scrambleSolve" />
 
             <Button
+                android:id="@+id/backupBT"
+                android:layout_width="325dp"
+                android:layout_height="66dp"
+                android:layout_marginTop="8dp"
+                android:text="Backup/Restore"
+                android:textSize="20sp"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/backupicon"
+                app:iconGravity="textStart"
+                app:iconSize="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CubeBT" />
+
+            <Button
                 android:id="@+id/Tutorial"
                 android:layout_width="325dp"
                 android:layout_height="66dp"
@@ -109,22 +124,7 @@
                 app:iconSize="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Camera_Scan" />
-
-            <Button
-                android:id="@+id/Camera_Scan"
-                android:layout_width="325dp"
-                android:layout_height="66dp"
-                android:layout_marginTop="8dp"
-                android:text="Camera"
-                android:textSize="20sp"
-                app:cornerRadius="30dp"
-                app:icon="@drawable/ic_menu_camera"
-                app:iconGravity="textStart"
-                app:iconSize="40dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/CubeBT" />
+                app:layout_constraintTop_toBottomOf="@+id/backupBT" />
 
             <Button
                 android:id="@+id/darkmodeBT"

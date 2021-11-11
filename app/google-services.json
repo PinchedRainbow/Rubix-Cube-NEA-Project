@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "511903169685",
+    "project_id": "rubix-cube-solve-1613217875676",
+    "storage_bucket": "rubix-cube-solve-1613217875676.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511903169685:android:a90cb475948ef850bbaf9c",
+        "android_client_info": {
+          "package_name": "com.jawaadianinc.rubixcubesolver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511903169685-ur6tham8424c9pit8c03u2rmkgh8btfm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jawaadianinc.rubixcubesolver",
+            "certificate_hash": "357a18f5f88ab7aaaf0ad717ae7671caaca0c54f"
+          }
+        },
+        {
+          "client_id": "511903169685-abrle312q7pdtejd121fcecmkek458vl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDvcKhAuE76sxo2t41bg8l3VGV6jbu8uI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511903169685-abrle312q7pdtejd121fcecmkek458vl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

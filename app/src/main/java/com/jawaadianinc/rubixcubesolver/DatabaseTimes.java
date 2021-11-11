@@ -74,7 +74,7 @@ public class DatabaseTimes extends SQLiteOpenHelper {
 //        String SQLString = "SELECT SHUFFLE, DATE_TIME, TYPE_OF_CUBE FROM TIMES_TABLE WHERE ID = " + i;
 //        Cursor cursor = db.rawQuery(SQLString, null);
 //        if (cursor.moveToFirst()){
-//            returnData = "On " + cursor.getString(1) + "\nShuffle:\n" + cursor.getString(0) + "\nType of Cube: " + cursor.getString(2);
+//            returnData = "On " + cursor.getString(1) + "\nShuffle:\n" + cursor.getString(0) + "\nType of Cube_Original: " + cursor.getString(2);
 //        }
 //
 //        cursor.close();
@@ -247,7 +247,7 @@ public class DatabaseTimes extends SQLiteOpenHelper {
             Date avgDate = new Date((sum / split.length));
             String fastest = shortestTime.stream().min(Comparator.naturalOrder()).get();
             String longest = shortestTime.stream().max(Comparator.naturalOrder()).get();
-            return sdf.format(avgDate) + "\nBest: " + fastest + "\nLongest: " + longest;
+            return sdf.format(avgDate) + "\nBest time: " + fastest + "\nWorst time: " + longest;
         }
         return "No Time set";
     }
@@ -286,7 +286,7 @@ public class DatabaseTimes extends SQLiteOpenHelper {
             Date avgDate = new Date((sum / split.length));
             String fastest = shortestTime.stream().min(Comparator.naturalOrder()).get();
             String longest = shortestTime.stream().max(Comparator.naturalOrder()).get();
-            return sdf.format(avgDate) + "\nBest: " + fastest + "\nLongest: " + longest;
+            return sdf.format(avgDate) + "\nBest time: " + fastest + "\nWorst time: " + longest;
         }
         return "No Time set";
     }
@@ -325,7 +325,7 @@ public class DatabaseTimes extends SQLiteOpenHelper {
             Date avgDate = new Date((sum / split.length));
             String fastest = shortestTime.stream().min(Comparator.naturalOrder()).get();
             String longest = shortestTime.stream().max(Comparator.naturalOrder()).get();
-            return sdf.format(avgDate) + "\nBest: " + fastest + "\nLongest: " + longest;
+            return sdf.format(avgDate) + "\nBest time: " + fastest + "\nWorst time: " + longest;
         }
         return "No Time set";
     }
@@ -373,7 +373,6 @@ public class DatabaseTimes extends SQLiteOpenHelper {
         String SQLString = "SELECT * FROM " + TIMES_TABLE + " WHERE " + TYPE_OF_CUBE + " = '2x2'";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(SQLString, null);
-
         if (cursor.moveToFirst()) {
             do {
                 solves3x3 += 1;

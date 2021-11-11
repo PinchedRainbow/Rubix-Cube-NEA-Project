@@ -3,18 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/drawable-v24/ic_rotate_left_black_24dp.xml" value="0.1787037037037037" />
+        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/drawable/cube_button_blue.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/font-v26/opensans.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/font/opensans.xml" value="0.3927083333333333" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_about.xml" value="0.5" />
+        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_backup.xml" value="0.2260135135135135" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_camera_capture_cube.xml" value="0.3625" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_camera_scan.xml" value="0.271875" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_main.xml" value="0.271875" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_main_menu.xml" value="0.271875" />
-        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_menu_picker.xml" value="0.33" />
-        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_splash_screen.xml" value="0.33" />
+        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_menu_picker.xml" value="0.3625" />
+        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
+        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_statistics.xml" value="0.3625" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_tutorial.xml" value="0.271875" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/activity_view_users.xml" value="0.228125" />
+        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/edit_scramble_dialog_body.xml" value="0.3625" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/fragment_beginnners_method.xml" value="0.228125" />
+        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/fragment_c_f_o_p_method.xml" value="0.3625" />
+        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/fragment_color_input.xml" value="0.3625" />
+        <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/fragment_solution.xml" value="0.228125" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/fragment_solves_2x2.xml" value="0.271875" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/fragment_solves_3x3.xml" value="0.271875" />
         <entry key="..\:/Users/fahee/Desktop/Coding/Android Projects/RubixCubeSolver/app/src/main/res/layout/fragment_solves_4x4.xml" value="0.271875" />
@@ -31,7 +39,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

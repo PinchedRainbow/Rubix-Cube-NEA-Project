@@ -1,4 +1,4 @@
-package com.amg.rubik.cube;
+package com.amg.rubik.cubeOriginal;
 
 import com.amg.rubik.Log;
 import com.amg.rubik.graphics.Axis;
@@ -8,9 +8,9 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 /**
- * This class handles cube's definition. It creates all squares, faces and puts them in appropriate
+ * This class handles cubeOriginal's definition. It creates all squares, faces and puts them in appropriate
  * lists for each axes. It also takes care of updating the colors of squares according to user
- * specified rotation. It doesn't care about drawing the cube. You should extend this class
+ * specified rotation. It doesn't care about drawing the cubeOriginal. You should extend this class
  * rather than using it directly.
  */
 public class Cube {
@@ -25,7 +25,7 @@ public class Cube {
     public static final int FACE_BOTTOM = 5;
 
     /**
-     * Default colors don't look nice on cube.
+     * Default colors don't look nice on cubeOriginal.
      * Note: Colors are in RBGA (for libgdx)
      * */
     public static final int Color_RED = 0xDD2211FF;
@@ -95,13 +95,13 @@ public class Cube {
         mSizeX = sizeX;
         mSizeY = sizeY;
         mSizeZ = sizeZ;
-        Log.w(tag, String.format("Cube Dimen: %d %d %d", sizeX, sizeY, sizeZ));
+        Log.w(tag, String.format("Cube_Original Dimen: %d %d %d", sizeX, sizeY, sizeZ));
         int maxSize = Math.max(Math.max(sizeX, sizeY), sizeZ);
         squareSize = (TOTAL_SIZE - PADDING - GAP * (maxSize + 1)) / maxSize;
-        cube();
+        cubeOriginal();
     }
 
-    private void cube()
+    private void cubeOriginal()
     {
         mAllSquares = new ArrayList<>();
         mFrontSquares = new ArrayList<>();
@@ -391,7 +391,7 @@ public class Cube {
     /**
      * Create pieces and store them as faces/layers. Three sets of layers are maintained
      * corresponding to each dimension (m*axisFaceList). A piece can have anywhere from
-     * one to six squares (in a 1x1x1 cube).
+     * one to six squares (in a 1x1x1 cubeOriginal).
      *
      * To avoid creating duplicate pieces, we store all pieces in a separate list and search it
      * for any existing pieces with the given square before creating a new one.
@@ -769,15 +769,15 @@ public class Cube {
      * Rotate the face specified by @face and @axis.
      *
      * Note that the direction is relative to positive direction of the mentioned axis, and not
-     * the visible side of face. This is against the normal cube notation where direction is
+     * the visible side of face. This is against the normal cubeOriginal notation where direction is
      * usually mentioned relative to the face being rotated.
      *
-     * For instance, in traditional cube notation, L stands for left face clockwise where the
+     * For instance, in traditional cubeOriginal notation, L stands for left face clockwise where the
      * clock is running on the visible face of the left face. It will rotate left face clockwise
      * around the negative x axis. In our case, left face is face-0 on X axis and to achieve "L",
      * we should call this function with values (X, CCW, 0)
      *
-     * Example mappings from traditional notation to this function (assuming 3x3x3 cube):
+     * Example mappings from traditional notation to this function (assuming 3x3x3 cubeOriginal):
      * Front face clockwise: (Z, CW, 2)
      * Left face clockwise: (X, CCW, 0)
      * Bottom face clockwise: (Y, CCW, 0)
@@ -1005,10 +1005,10 @@ public class Cube {
     }
 
     /**
-     * Rotate the whole cube along the given axis.
+     * Rotate the whole cubeOriginal along the given axis.
      * Can be used for 90' rotations in skewed cubes
      *
-     * This function basically reorganizes the cube
+     * This function basically reorganizes the cubeOriginal
      * */
     protected void rotate(Axis axis, Direction direction) {
         int x = 0, y = 0, z = 0;

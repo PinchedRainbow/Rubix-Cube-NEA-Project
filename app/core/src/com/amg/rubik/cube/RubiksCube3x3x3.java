@@ -1,18 +1,18 @@
-package com.amg.rubik.cube;
+package com.amg.rubik.cubeOriginal;
+
+import com.amg.rubik.Log;
+import com.amg.rubik.graphics.Axis;
+import com.amg.rubik.graphics.Direction;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.amg.rubik.Log;
-import com.amg.rubik.graphics.Direction;
-import com.amg.rubik.graphics.Axis;
-
 /**
  * An algorithm can't be smarter than the human who devised it.
  *
- * This is a beginner's approach to solving 3x3 cube. You will see many easy to think of
- * improvements in the logic. Like how it takes 150 moves for a cube that could have been
+ * This is a beginner's approach to solving 3x3 cubeOriginal. You will see many easy to think of
+ * improvements in the logic. Like how it takes 150 moves for a cubeOriginal that could have been
  * solved in a single move.
  * */
 public class RubiksCube3x3x3 extends RubiksCube {
@@ -228,7 +228,7 @@ public class RubiksCube3x3x3 extends RubiksCube {
                 continue;
             }
 
-            // If the other color in the missing edge is not the front-color, rotate the cube
+            // If the other color in the missing edge is not the front-color, rotate the cubeOriginal
             // until it becomes so.
             if (i != EDGE_TOP_NEAR) {
                 Direction dir = (i == EDGE_TOP_LEFT) ?
@@ -1208,7 +1208,7 @@ public class RubiksCube3x3x3 extends RubiksCube {
          *
          * case 1: They are adjacent:
          *   The other two are in swapped state now.
-         *   Rotate the cube once to misalign the currently aligned one and align
+         *   Rotate the cubeOriginal once to misalign the currently aligned one and align
          *   one of the other two
          * case 2: They are opposite
          *   Apply algo and hope for the best
@@ -1229,7 +1229,7 @@ public class RubiksCube3x3x3 extends RubiksCube {
         }
 
         /**
-         * Only one of them is aligned. Turn the cube to bring that color to front and apply
+         * Only one of them is aligned. Turn the cubeOriginal to bring that color to front and apply
          * appropriate algorithm
          * */
         if (alignedCount == 1) {

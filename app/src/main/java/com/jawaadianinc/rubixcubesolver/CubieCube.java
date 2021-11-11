@@ -451,7 +451,7 @@ class CubieCube {
         if ((Util.getNParity(Util.getNPerm(ea, 12, true), 12) ^ Util.getNParity(getCPerm(), 8)) != 0) {
             return -6;// parity error
         }
-        return 0;// cube ok
+        return 0;// cubeOriginal ok
     }
 
     long selfSymmetry() {

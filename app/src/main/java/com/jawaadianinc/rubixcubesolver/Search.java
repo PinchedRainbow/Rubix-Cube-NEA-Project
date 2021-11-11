@@ -17,7 +17,7 @@
 package com.jawaadianinc.rubixcubesolver;
 
 /**
- * Rubik's Cube Solver.<br>
+ * Rubik's Cube_Original Solver.<br>
  * A much faster and smaller implemention of Two-Phase Algorithm.<br>
  * Symmetry is used to reduce memory used.<br>
  * Total Memory used is about 1MB.<br>

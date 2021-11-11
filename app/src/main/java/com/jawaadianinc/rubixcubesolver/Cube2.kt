@@ -19,7 +19,7 @@ class Cube2 {
 
     // Draw the shape
     fun draw(gl: GL10) {
-        //Cube(gl)
+        //Cube_Original(gl)
         cornerPieceWhiteOrangeBlue(gl) //done
         edgePieceWhiteOrnage(gl) //done
         cornerPieceWhiteOrangeGreen(gl)// done

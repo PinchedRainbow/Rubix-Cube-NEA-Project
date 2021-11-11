@@ -35,9 +35,7 @@ class CoordCube {
     static int[] MCPermPrun = new int[N_MPERM * N_PERM_SYM / 8 + 1];
     static int[] EPermCCombPPrun = new int[N_COMB * N_PERM_SYM / 8 + 1];
 
-    /**
-     * 0: not initialized, 1: partially initialized, 2: finished
-     */
+
     static int initLevel = 0;
     int twist;
     int tsym;

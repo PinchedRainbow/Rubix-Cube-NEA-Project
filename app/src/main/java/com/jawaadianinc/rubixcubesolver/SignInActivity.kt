@@ -32,7 +32,7 @@ class SignInActivity : AppCompatActivity() {
 
     private var alreadyPlayedAnimation = 0
     var text = arrayOf(
-        "The Cube Assistant app",
+        "The Cube_Original Assistant app",
         "Have fun cubing :)",
         "Material Design Friendly",
         "46 Quintillion possible shuffles!",
