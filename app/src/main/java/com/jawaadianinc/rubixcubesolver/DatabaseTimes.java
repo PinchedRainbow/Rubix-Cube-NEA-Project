@@ -48,6 +48,7 @@ public class DatabaseTimes extends SQLiteOpenHelper {
         cv.put(DATE_TIME, String.valueOf(new java.sql.Timestamp(new java.util.Date().getTime())));
         cv.put(TYPE_OF_CUBE, timeModel.getTypeOfCube());
         final long insert = db.insert(TIMES_TABLE, null, cv);
+        db.close();
         return insert != -1;
     }
 
@@ -147,6 +148,7 @@ public class DatabaseTimes extends SQLiteOpenHelper {
     public boolean DeleteTime(String time) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TIMES_TABLE + " WHERE " + TIME_SOLVE + " = '" + time + "'");
+        db.close();
         return true;
     }
 
@@ -349,7 +351,8 @@ public class DatabaseTimes extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
 
         }
-
+        db.close();
+        cursor.close();
         return solves3x3;
     }
 
@@ -365,6 +368,8 @@ public class DatabaseTimes extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
 
         }
+        db.close();
+        cursor.close();
         return solves3x3;
     }
 
@@ -379,6 +384,8 @@ public class DatabaseTimes extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
 
         }
+        db.close();
+        cursor.close();
         return solves3x3;
     }
 

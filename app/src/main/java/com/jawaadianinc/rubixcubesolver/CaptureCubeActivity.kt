@@ -20,15 +20,10 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 
-/**
- * Created by development on 8/16/17.
- */
+
 class CaptureCubeActivity : AppCompatActivity(), SurfaceHolder.Callback, View.OnClickListener,
     AdapterView.OnItemSelectedListener {
     var preview: CameraPreview? = null
-
-    //int values used to store where the grid is on-screen
-    //passed onto the preview frame for processing cube's colors
     private var centerX = 0
     private var centerY = 0
     private var startX = 0

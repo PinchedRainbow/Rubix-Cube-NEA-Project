@@ -39,6 +39,7 @@ class solves_4x4 : Fragment() {
         val timeArrayAdaptor =
             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, threeTimes)
         list.adapter = timeArrayAdaptor
+        timeArrayAdaptor.notifyDataSetChanged()
 
         val total = databaseTimes.totalSolves4x4
         val nosolves: TextView = view.findViewById(R.id.nosolves3)

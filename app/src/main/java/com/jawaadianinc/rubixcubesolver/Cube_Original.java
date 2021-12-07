@@ -158,7 +158,6 @@ public class Cube_Original {
             }
         }
 
-
         cubeOriginal.makeSunflower();
         cubeOriginal.makeWhiteCross();
         cubeOriginal.finishWhiteLayer();

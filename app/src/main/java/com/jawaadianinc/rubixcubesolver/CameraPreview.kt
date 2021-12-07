@@ -13,9 +13,7 @@ import android.view.SurfaceView
 import android.widget.Toast
 import java.io.IOException
 
-/**
- * Created by development on 8/15/17.
- */
+
 class CameraPreview(context: Context?, camera: Camera) : SurfaceView(context),
     SurfaceHolder.Callback, PreviewCallback {
     var camera: Camera
@@ -57,7 +55,6 @@ class CameraPreview(context: Context?, camera: Camera) : SurfaceView(context),
         this.data = data
     }
 
-    /* Callback that is called when the surface is created or orientation changes */
     override fun surfaceCreated(holder: SurfaceHolder) {
         // The Surface has been created, now tell the camera where to draw the preview.
         Log.d("Surface Created", "TRUE")
@@ -77,25 +74,18 @@ class CameraPreview(context: Context?, camera: Camera) : SurfaceView(context),
 
     override fun surfaceChanged(holder: SurfaceHolder, format: Int, w: Int, h: Int) {
 
-        // If your preview can change or rotate, take care of those events here.
-        // Make sure to stop the preview before resizing or reformatting it.
         if (surfaceHolder.surface == null) {
-            // preview surface does not exist
             Log.d("Surface Changed", "FALSE")
             return
         } else {
             Log.d("Surface Changed", "TRUE")
         }
 
-        // stop preview before making changes
         try {
             camera.stopPreview()
         } catch (e: Exception) {
-            // ignore: tried to stop a non-existent preview
         }
 
-        // set preview size and make any resize, rotate or
-        // reformatting changes here
         val parameters = camera.parameters
         parameters.setPreviewSize(previewSize!!.width, previewSize!!.height)
         val focusModes = parameters.supportedFocusModes
@@ -107,7 +97,6 @@ class CameraPreview(context: Context?, camera: Camera) : SurfaceView(context),
         Log.d(ContentValues.TAG, "height: " + previewSize!!.height)
         camera.parameters = parameters
 
-        // start preview with new settings
         try {
             camera.setPreviewDisplay(surfaceHolder)
             camera.setDisplayOrientation(90)
@@ -137,7 +126,6 @@ class CameraPreview(context: Context?, camera: Camera) : SurfaceView(context),
         // Log.d("Width", "" + camImageWidth);
         //Log.d("Height", "" + camImageHeight);
 
-        //The RenderScript way
         val bitmap = Bitmap.createBitmap(camImageWidth, camImageHeight, Bitmap.Config.ARGB_8888)
         val bitmapData = renderScriptNV21ToRGBA888(
             context,
@@ -190,7 +178,6 @@ class CameraPreview(context: Context?, camera: Camera) : SurfaceView(context),
         val indexColors = charArrayOf('R', 'Y', 'G', 'B', 'O', 'W')
         val centerColors = arrayOfNulls<FloatArray>(6)
         for (i in centerColors.indices) {
-            //Copy the appropriate center's color into the array
             centerColors[i] = pixelHSVs[i][1][1]
             Log.d("Center Hue " + indexColors[i], "" + centerColors[i]!![0])
             Log.d("Center Saturation " + indexColors[i], "" + centerColors[i]!![1])
@@ -281,7 +268,6 @@ class CameraPreview(context: Context?, camera: Camera) : SurfaceView(context),
         supportedPreviewSizes = camera.parameters.supportedPreviewSizes
         surfaceHolder = holder
         surfaceHolder.addCallback(this)
-        // deprecated setting, but required on Android versions < 3.0
         surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS)
         previewBitmaps = arrayOfNulls(6)
         pixelHSVs = Array(6) { Array(3) { Array(3) { FloatArray(3) } } }

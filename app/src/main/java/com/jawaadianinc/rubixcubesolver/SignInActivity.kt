@@ -19,7 +19,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.Scope
 import com.google.android.gms.tasks.Task
+import com.google.api.services.drive.DriveScopes
 import com.tomer.fadingtextview.FadingTextView
 import java.sql.Timestamp
 import java.util.*
@@ -30,17 +32,19 @@ const val RC_SIGN_IN = 123
 @SuppressLint("SetTextI18n")
 class SignInActivity : AppCompatActivity() {
 
+
     private var alreadyPlayedAnimation = 0
     var text = arrayOf(
-        "The Cube_Original Assistant app",
+        "The Cubee Assistant app!",
         "Have fun cubing :)",
         "Material Design Friendly",
         "46 Quintillion possible shuffles!",
-        "Sign in for easier setup",
         "Welcome back!",
         "We hope you enjoy the app",
         "Coming soon: Multiplayer ;)",
-        "The WR for 3x3 is 3.47 seconds!!! :O"
+        "The WR for 3x3 is 3.47 seconds!!! :O",
+        "Solve a Rubix Cube!",
+        "Now with dark mode"
     )
 
 
@@ -154,6 +158,7 @@ class SignInActivity : AppCompatActivity() {
     private fun showgoogle() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestEmail()
+            .requestScopes(Scope(DriveScopes.DRIVE_FILE))
             .build()
         val mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
@@ -203,6 +208,8 @@ class SignInActivity : AppCompatActivity() {
             databaseHelper.addUser(UserModel)
 
             //Toast.makeText(this, "Database created!", Toast.LENGTH_SHORT).show()val
+
+
             onToNextPage()
 
         } catch (e: ApiException) {

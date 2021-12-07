@@ -38,6 +38,7 @@ class MainMenu : AppCompatActivity() {
         viewPager?.adapter = adapter
         viewPager?.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         viewPager?.setPageTransformer(true, ZoomOutPageTransformer())
+        //viewPager?.offscreenPageLimit = 3
         val refreshFab: FloatingActionButton = findViewById(R.id.refreshFab)
         refreshFab.hide()
         tabLayout?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -124,7 +125,7 @@ class MainMenu : AppCompatActivity() {
         this.deleteDatabase("times.db")
         Toast.makeText(applicationContext, "Solves deleted!", Toast.LENGTH_LONG).show()
         super.finish()
-        val intent = Intent(this, MainMenu::class.java)
+        val intent = Intent(this, MenuPicker::class.java)
         startActivity(intent)
 
     }
