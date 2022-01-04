@@ -1,15 +1,9 @@
 package com.jawaadianinc.rubixcubesolver;
 
 /**
- * Copyright 2017, Shoumyo Chakravorti, All rights reserved.
- * <p>
- * Licensed under the MIT License.
- * <p>
  * The CubieColor class defines the set of colors and their respective directions that can be held
  * by an individual cubie.
- *
- * @author Shoumyo Chakravorti
- * @version 2.0
+
  */
 
 public class CubieColor {

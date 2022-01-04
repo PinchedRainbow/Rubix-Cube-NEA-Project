@@ -12,9 +12,6 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
-/**
- * Created by development on 8/4/17.
- */
 
 public class EditScrambleDialog extends DialogFragment {
 
