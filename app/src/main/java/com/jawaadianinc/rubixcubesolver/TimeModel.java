@@ -20,10 +20,6 @@ public class TimeModel {
     @NotNull
     @Override
     public String toString() {
-//        return "TimeModel{" +
-//                "timeSolved='" + timeSolved + '\'' +
-//                ", dateTime='" + dateTime + '\'' +
-//                '}';
         return "Time: " + timeSolved;
     }
 

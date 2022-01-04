@@ -195,11 +195,11 @@ public class Cube_Original {
 
     public static String generateRandScramble() {
         StringBuilder scramble = new StringBuilder();
-        char[] possMoves = new char[]{'U', 'D', 'R', 'L', 'F', 'B'};
+        char[] possMoves = new char[]{'U', 'D', 'R', 'L', 'F', 'B'}; //Valid moves
         char prevMove = possMoves[(int) (Math.random() * 6)];
         char secondLastMove = possMoves[(int) (Math.random() * 6)];
         for (int numMoves = 0; numMoves < 20; ) {
-            char move = possMoves[(int) (Math.random() * 6)]; //raaaaaaaaaaandom move
+            char move = possMoves[(int) (Math.random() * 6)]; //random move
             //DO IT if the random move is different from the last two
             if (move != prevMove && move != secondLastMove) {
                 int rand = (int) (Math.random() * 100);

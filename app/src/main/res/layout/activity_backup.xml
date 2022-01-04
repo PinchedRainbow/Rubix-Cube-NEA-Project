@@ -8,13 +8,13 @@
 
     <Button
         android:id="@+id/backup"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Backup to Google Drive"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/restore"
+        app:layout_constraintStart_toStartOf="@+id/restore"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button

@@ -19,7 +19,6 @@ public class DataBaseUsers extends SQLiteOpenHelper {
     public static final String USERS_JOINED = "USERS_JOINED";
     public static final String USERS_TABLE = "USERS_TABLE";
 
-
     public DataBaseUsers(@Nullable Context context) {
         super(context, "users.db", null, 1);
     }
@@ -27,7 +26,7 @@ public class DataBaseUsers extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + USERS_TABLE + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + USERS_NAME + " TEXT, " + USERS_EMAIL + " TEXT, " + USERS_ID + " TEXT, " + USERS_JOINED + " TIMESTAMP)";
-
+        //Creates the table
         db.execSQL(createTable);
 
     }
@@ -38,6 +37,7 @@ public class DataBaseUsers extends SQLiteOpenHelper {
     }
 
     public boolean addUser(UserModel userModel) {
+        //Methode to add a user to the database
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(USERS_NAME, userModel.getName());
