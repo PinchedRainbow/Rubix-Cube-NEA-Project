@@ -31,8 +31,6 @@ const val RC_SIGN_IN = 123
 
 @SuppressLint("SetTextI18n")
 class SignInActivity : AppCompatActivity() {
-
-
     private var alreadyPlayedAnimation = 0
     var text = arrayOf(
         "The Cubee Assistant app!",
@@ -55,9 +53,12 @@ class SignInActivity : AppCompatActivity() {
         val fadingText: FadingTextView = findViewById(R.id.fadingTextView)
         fadingText.setTexts(text)
 
+        //Checks if there is an existing Google account signed in already in the app
         val account = GoogleSignIn.getLastSignedInAccount(this)
 
+
         if (account != null) {
+            //If an account is present, then skip the sign in section and go to main menu
             Toast.makeText(this, "Welcome ${account.displayName}", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MenuPicker::class.java)
             startActivity(intent)
@@ -65,7 +66,7 @@ class SignInActivity : AppCompatActivity() {
 
         val hellotext: TextView = findViewById(R.id.Hello)
         if (account == null) {
-            TextAnimation()
+            textAnimation()
         } else {
             val name = account.displayName
             hellotext.text = "Welcome back $name!"
@@ -102,6 +103,7 @@ class SignInActivity : AppCompatActivity() {
             btnToggleDark.text = "Dark Mode off"
         }
 
+        //Handle app theming via button on click listener
         btnToggleDark.setOnClickListener {
             if (isDarkModeOn) {
                 AppCompatDelegate
@@ -115,7 +117,6 @@ class SignInActivity : AppCompatActivity() {
                 editor.apply()
                 btnToggleDark.text = "Dark Mode off"
             } else {
-
                 AppCompatDelegate
                     .setDefaultNightMode(
                         AppCompatDelegate.MODE_NIGHT_YES
@@ -131,10 +132,12 @@ class SignInActivity : AppCompatActivity() {
 
     }
 
-    private fun TextAnimation() {
+    private fun textAnimation() {
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val translationY = displayMetrics.heightPixels * 0.20f
+        //Gets the display size and calculates the translation of Y
+
         val hellotext: TextView = findViewById(R.id.Hello)
         hellotext.text = "Tap here to get started!"
 
@@ -142,6 +145,7 @@ class SignInActivity : AppCompatActivity() {
         hellotext.startAnimation(animation)
 
         hellotext.setOnClickListener {
+            //When the user clicks on the text
             if (alreadyPlayedAnimation == 0) {
                 hellotext.animate().apply {
                     duration = 750
@@ -161,10 +165,12 @@ class SignInActivity : AppCompatActivity() {
             .requestScopes(Scope(DriveScopes.DRIVE_FILE))
             .build()
         val mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        //Builds the Google Request
 
         val button: SignInButton = findViewById(R.id.googleSignIn)
         button.setSize(SignInButton.SIZE_WIDE)
         button.setColorScheme(SignInButton.COLOR_DARK)
+        //Properties of button attributes
         button.visibility = VISIBLE
         button.setOnClickListener {
             val signInIntent: Intent = mGoogleSignInClient.signInIntent
@@ -175,7 +181,6 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleSignInResult(task)
@@ -196,6 +201,7 @@ class SignInActivity : AppCompatActivity() {
             }
 
             val accountId = account?.id
+            //Class of user
             val UserModel = UserModel(
                 accountId,
                 account?.displayName,
@@ -204,13 +210,11 @@ class SignInActivity : AppCompatActivity() {
             )
 
             val databaseHelper = DataBaseUsers(this)
-
             databaseHelper.addUser(UserModel)
-
-            //Toast.makeText(this, "Database created!", Toast.LENGTH_SHORT).show()val
-
-
-            onToNextPage()
+            //Add class to database
+            val intent = Intent(this, MenuPicker::class.java)
+            startActivity(intent)
+            //onToNextPage()
 
         } catch (e: ApiException) {
             Toast.makeText(this, "Error Signing in", Toast.LENGTH_SHORT).show()
@@ -220,13 +224,13 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun onToNextPage() {
-        val animation = AnimationUtils.loadAnimation(this, R.anim.right_io_left_enter)
+        val animation = AnimationUtils.loadAnimation(this, R.anim.bounc)
         val nextBttn: Button = findViewById(R.id.nextButton)
         val button: SignInButton = findViewById(R.id.googleSignIn)
         button.visibility = GONE
         nextBttn.visibility = VISIBLE
         val btnToggleDark: Button = findViewById(R.id.btnToggleDark)
-        nextBttn.startAnimation(animation)
+        //nextBttn.startAnimation(animation)
 
         val hellotext: TextView = findViewById(R.id.Hello)
 
@@ -235,8 +239,9 @@ class SignInActivity : AppCompatActivity() {
             val p1: Pair<View, String> = Pair.create(nextBttn, "mainMenu")
             val p2: Pair<View, String> = Pair.create(btnToggleDark, "darkButton")
             val p3: Pair<View, String> = Pair.create(hellotext, "appBar")
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, p1, p2, p3)
+            //Animation extras
 
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, p1, p2, p3)
             startActivity(intent, options.toBundle())
         }
     }
@@ -244,6 +249,7 @@ class SignInActivity : AppCompatActivity() {
     override fun finish() {
         super.finish()
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+        //Fade in and out animation
     }
 
     override fun recreate() {
@@ -258,7 +264,5 @@ class SignInActivity : AppCompatActivity() {
             R.anim.fade_out
         )
     }
-
-
 }
 

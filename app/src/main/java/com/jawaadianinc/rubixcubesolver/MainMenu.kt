@@ -25,6 +25,7 @@ class MainMenu : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
         setSupportActionBar(toolbar)
 
+        //Setting up tabs
         tabLayout = findViewById<View>(R.id.tabs) as? TabLayout
         viewPager = findViewById<View>(R.id.view_pager) as? ViewPager
         tabLayout?.tabGravity = TabLayout.GRAVITY_FILL
@@ -36,12 +37,18 @@ class MainMenu : AppCompatActivity() {
         tabLayout?.newTab()?.setText("4x4")?.let { tabLayout?.addTab(it) }
         val adapter = tabLayout?.tabCount?.let { MyTimerAdaptor(supportFragmentManager, it) }
         viewPager?.adapter = adapter
+        viewPager?.offscreenPageLimit = 10
         viewPager?.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
         viewPager?.setPageTransformer(true, ZoomOutPageTransformer())
+        //Setting up tabs
+
+
         //viewPager?.offscreenPageLimit = 3
         val refreshFab: FloatingActionButton = findViewById(R.id.refreshFab)
+        //Refreshes the activity for any database changes
         refreshFab.hide()
         tabLayout?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            //Gets called everytime a user is on a tab/new tab
             override fun onTabSelected(tab: TabLayout.Tab) {
                 viewPager?.currentItem = tab.position
                 if (tab.position == 1) {
@@ -80,10 +87,10 @@ class MainMenu : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            //When a menu item has been clicked
             R.id.settings -> goSettings()
             R.id.about -> goAbout()
             R.id.clear_File -> showAlertDialog()
-
             else -> super.onOptionsItemSelected(item)
         }
         return true
@@ -111,7 +118,7 @@ class MainMenu : AppCompatActivity() {
         builder.setIcon(android.R.drawable.ic_dialog_alert)
 
         builder.setPositiveButton("Yes") { _, _ ->
-            deleteTextFile()
+            deleteDatabase()
         }
         builder.setNegativeButton("Cancel") { _, _ ->
         }
@@ -121,8 +128,8 @@ class MainMenu : AppCompatActivity() {
         alertDialog.show()
     }
 
-    private fun deleteTextFile() {
-        this.deleteDatabase("times.db")
+    private fun deleteDatabase() {
+        this.deleteDatabase("solveTimes.db")
         Toast.makeText(applicationContext, "Solves deleted!", Toast.LENGTH_LONG).show()
         super.finish()
         val intent = Intent(this, MenuPicker::class.java)
@@ -143,6 +150,4 @@ class MainMenu : AppCompatActivity() {
         )
 
     }
-
-
 }

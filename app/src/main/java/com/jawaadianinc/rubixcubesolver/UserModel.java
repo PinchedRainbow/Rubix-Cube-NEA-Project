@@ -4,11 +4,14 @@ import org.jetbrains.annotations.NotNull;
 
 public class UserModel {
 
+    //This is the user class model, each user has a unique ID based on their Google account along with a name and email
+
     private String id;
     private String name;
     private String email;
     private String date;
 
+    //Constructor
     public UserModel(String id, String name, String email, String date) {
         this.id = id;
         this.name = name;
@@ -21,8 +24,10 @@ public class UserModel {
 
     @NotNull
     @Override
+    //For calling it to a string format
     public String toString() {
         return "Name: " + name + "\nEmail: " + email + "\nDate Joined: " + date;
+
 //        return "UserModel{" +
 //                "id=" + id +
 //                ", name='" + name + '\'' +
@@ -30,6 +35,7 @@ public class UserModel {
 //                '}';
     }
 
+    //Getters and setters in Kotlin.
     public String getId() {
         return id;
     }

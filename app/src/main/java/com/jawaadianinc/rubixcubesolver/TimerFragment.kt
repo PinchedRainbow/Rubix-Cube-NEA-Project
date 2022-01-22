@@ -15,6 +15,7 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.snackbar.Snackbar
 import java.sql.Timestamp
 import java.util.*
@@ -58,7 +59,7 @@ class TimerFragment : Fragment() {
         val shuffleText: TextView = getView()?.findViewById(R.id.shuffleText) as TextView
         timerText.visibility = View.INVISIBLE
 
-        Search.init()
+        //Search.init()
         handler = Handler()
 
         timerText.text = "0:00:000"
@@ -108,12 +109,15 @@ class TimerFragment : Fragment() {
 //                stopTimer()
 //                timerText.setTextColor(Color.parseColor(("#5D8832")))
 //            }
+
             //VERY OLD insufficient method but imma keep it here as memory
 
             if (timerText.currentTextColor == Color.parseColor(("#5D8832"))) {
+                //Run if colour is green
                 startTimer()
                 timerText.setTextColor(ContextCompat.getColor(requireContext(), R.color.teal_200))
             } else {
+                //Run if colour is bloo
                 stopTimer()
                 timerText.setTextColor(Color.parseColor(("#5D8832")))
             }
@@ -128,24 +132,38 @@ class TimerFragment : Fragment() {
                 alreadyPlayeed++
                 timerText.visibility = View.VISIBLE
                 timerText.startAnimation(animation3)
-
             }
             shuffle()
+            //Method to shuffle!
         }
 
     }
 
     private fun saveTime() {
+
+        val account = GoogleSignIn.getLastSignedInAccount(requireActivity())
+
         val timeModel =
-            TimeModel(currentTime, Timestamp(Date().time).toString(), currentShuffle, typeOfCube)
+            TimeModel(
+                currentTime,
+                Timestamp(Date().time).toString(),
+                currentShuffle,
+                typeOfCube,
+                account!!.displayName
+            )
+        //Using timeModel class to store data about the time
+
         val databaseTime = DatabaseTimes(context)
         databaseTime.addTime(timeModel)
+        //Saves the timemodel into a database
+
         Toast.makeText(context, "Saved! -> $currentTime", Toast.LENGTH_SHORT).show()
     }
 
     private fun startTimer() {
         val spinner: Spinner = requireView().findViewById(R.id.CubeChooser)
         if (alreadyToldUser == 0) {
+            //Only here so first time users knows how to stop the timer
             view?.let {
                 Snackbar.make(it, "Click on time to stop!", Snackbar.LENGTH_SHORT)
                     .show()
@@ -155,10 +173,9 @@ class TimerFragment : Fragment() {
 
         val animation2: Animation = AnimationUtils.loadAnimation(context, R.anim.fade_out)
         val timerText: TextView? = view?.findViewById(R.id.timerText) as? TextView
-
         val shuffleText: TextView = view?.findViewById(R.id.shuffleText) as TextView
         shuffleText.startAnimation(animation2)
-
+        //Referencing and animation and visibility
         shuffleText.visibility = View.INVISIBLE
         spinner.visibility = View.INVISIBLE
 
@@ -167,11 +184,13 @@ class TimerFragment : Fragment() {
             timerText.gravity = 1
         }
         handler?.postDelayed(runnable, 0)
+        //Starts the timer
     }
 
     private fun stopTimer() {
         val animation1: Animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
         handler?.removeCallbacks(runnable)
+        //Stops the current timer
 
         val shuffleText: TextView = view?.findViewById(R.id.shuffleText) as TextView
         val spinner: Spinner = requireView().findViewById(R.id.CubeChooser)
@@ -179,8 +198,8 @@ class TimerFragment : Fragment() {
 
         shuffleText.visibility = View.VISIBLE
 
-        saveTime()
-        shuffle()
+        saveTime() // Saves time to database
+        shuffle() // Starts a new shuffle for the user
         //timerText.text = "0:00:000"
         spinner.visibility = View.VISIBLE
 
@@ -189,6 +208,10 @@ class TimerFragment : Fragment() {
     private var runnable: Runnable = object : Runnable {
         @SuppressLint("DefaultLocale")
         override fun run() {
+
+            //A method that runs every millisecond, which runs a stopwatch and constantly updating
+            //the textView
+
             val timerText: TextView? = view?.findViewById(R.id.timerText) as? TextView
             millisecondTime = SystemClock.uptimeMillis() - startTime
             updateTime = timeBuff + millisecondTime
@@ -203,6 +226,7 @@ class TimerFragment : Fragment() {
             currentTime = (minutes.toString() + ":"
                     + java.lang.String.format("%02d", seconds).toString() + ":"
                     + java.lang.String.format("%03d", milliSeconds))
+            //Formatting time etc etc
             handler?.postDelayed(this, 0)
         }
     }
@@ -212,10 +236,11 @@ class TimerFragment : Fragment() {
         val spinner: Spinner = requireView().findViewById(R.id.CubeChooser)
         val shuffuleText: TextView = view?.findViewById(R.id.shuffleText) as TextView
 
-        when {
+        when { // for 2x2
             shuffuleText.text == "Tap here to shuffle (2x2)" -> {
                 val slen = randomInt2x2()
-                val scramble = ScrambleGenerator(slen).scramble
+                val scramble =
+                    ScrambleGenerator(slen).scramble //Returns a string of a random valid scramble for 2x2
                 typeOfCube = "2x2"
                 val chosenColour = colours.random()
 

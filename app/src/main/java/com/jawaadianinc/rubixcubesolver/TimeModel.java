@@ -4,25 +4,30 @@ import org.jetbrains.annotations.NotNull;
 
 public class TimeModel {
 
+    //This is a class of time model
+
     private String timeSolved;
     private String dateTime;
     private String Shuffle;
     private String TypeOfCube;
+    private String nameofUser;
 
-
-    public TimeModel(String timeSolved, String dateTime, String Shuffle, String TypeOfCube) {
+    //Constructor
+    public TimeModel(String timeSolved, String dateTime, String Shuffle, String TypeOfCube, String nameofUser) {
         this.timeSolved = timeSolved;
         this.dateTime = dateTime;
         this.Shuffle = Shuffle;
         this.TypeOfCube = TypeOfCube;
+        this.nameofUser = nameofUser;
     }
 
     @NotNull
-    @Override
+    @Override //inheritance of toString method
     public String toString() {
         return "Time: " + timeSolved;
     }
 
+    //Getters and setters
     public String getTypeOfCube() {
         return TypeOfCube;
     }
@@ -55,5 +60,11 @@ public class TimeModel {
         Shuffle = shuffle;
     }
 
+    public String getNameofUser() {
+        return nameofUser;
+    }
 
+    public void setNameofUser(String nameofUser) {
+        this.nameofUser = nameofUser;
+    }
 }

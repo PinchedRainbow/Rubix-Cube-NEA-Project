@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 
 class solves_2x2 : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,9 +34,10 @@ class solves_2x2 : Fragment() {
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val account = GoogleSignIn.getLastSignedInAccount(requireActivity())
         val list = view.findViewById(R.id.list4x4) as ListView
         val databaseTimes = DatabaseTimes(requireContext())
-        val threeTimes = databaseTimes.get2x2Times()
+        val threeTimes = databaseTimes.get2x2Times(account!!.displayName)
         val timeArrayAdaptor =
             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, threeTimes)
         list.adapter = timeArrayAdaptor

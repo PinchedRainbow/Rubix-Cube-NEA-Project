@@ -18,7 +18,6 @@ class YourSolvesFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val inflater = TransitionInflater.from(requireContext())
         enterTransition = inflater.inflateTransition(R.transition.explode)
-
     }
 
     override fun onCreateView(
@@ -52,6 +51,7 @@ class YourSolvesFragment : Fragment() {
         val total4x4 = databaseTimes.totalSolves4x4
         textSolves4x4.text = "Total Solves: $total4x4\nAverage time: $allTimes4x4"
 
+        //Total solves
         val count = databaseTimes.totalSolves
         textSolves.text = "Overall total solves: $count"
 
@@ -77,8 +77,5 @@ class YourSolvesFragment : Fragment() {
             cardView.setCardBackgroundColor(Color.rgb(187, 134, 252))
             cardView4x4.setCardBackgroundColor(Color.rgb(187, 134, 252))
         }
-
     }
-
-
 }

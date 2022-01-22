@@ -37,7 +37,6 @@ public class Search {
      * Verbose_Mask determines if guaranteeing the solution to be optimal.
      */
     public static final int OPTIMAL_SOLUTION = 0x8;
-    //Options for research purpose.
     static final int MAX_PRE_MOVES = 20;
     static final boolean TRY_INVERSE = true;
     static final boolean TRY_THREE_AXES = true;

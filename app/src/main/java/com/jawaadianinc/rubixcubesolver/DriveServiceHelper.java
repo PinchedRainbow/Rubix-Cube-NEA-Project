@@ -25,7 +25,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 /**
- * A utility for performing read/write operations on Drive files via the REST API and opening a
+ * A method for performing read/write operations on Drive files via the REST API and opening a
  * file picker UI via Storage Access Framework.
  */
 public class DriveServiceHelper {
@@ -102,9 +102,7 @@ public class DriveServiceHelper {
      * Returns a {@link FileList} containing all the visible files in the user's My Drive.
      *
      * <p>The returned list will only contain files visible to this app, i.e. those which were
-     * created by this app. To perform operations on files not created by the app, the project must
-     * request Drive Full Scope in the <a href="https://play.google.com/apps/publish">Google
-     * Developer's Console</a> and be submitted to Google for verification.</p>
+     * created by this app.
      */
     public Task<FileList> queryFiles() {
         return Tasks.call(mExecutor, new Callable<FileList>() {

@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 
 class solves_3x3 : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,18 +34,23 @@ class solves_3x3 : Fragment() {
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val account = GoogleSignIn.getLastSignedInAccount(requireActivity())
         val list = view.findViewById(R.id.list4x4) as ListView
         val databaseTimes = DatabaseTimes(requireContext())
-        val threeTimes = databaseTimes.get3x3Times()
+        val threeTimes = databaseTimes.get3x3Times(account!!.displayName)
+        //Returns a list of all 3x3 times made
+
         val timeArrayAdaptor =
             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, threeTimes)
         list.adapter = timeArrayAdaptor
         timeArrayAdaptor.notifyDataSetChanged()
+        //Sets the listview to the list of the 3x3 times
 
         val total = databaseTimes.totalSolves3x3
         val nosolves: TextView = view.findViewById(R.id.nosolves)
 
         if (total == 0) {
+            //If there are no solves in the database
             list.visibility = View.INVISIBLE
             nosolves.visibility = View.VISIBLE
         } else {
@@ -52,15 +58,20 @@ class solves_3x3 : Fragment() {
             nosolves.visibility = View.INVISIBLE
         }
 
+        //Gets called when a user clicks on a item in the listview
         list.setOnItemClickListener { parent, _, position, _ ->
             var time = parent.getItemAtPosition(position).toString()
-            time = time.substringAfter(" ")
+            time = time.substringAfter(" ") //Splits the string so the app doesn't crash and die
+
+            //Accessing database to get details
             val timeId = databaseTimes.getId(time)
             val date = databaseTimes.getTimeID(timeId)
             val timeSolved = databaseTimes.getSolvedTime(timeId)
             val shuffle = databaseTimes.getShuffle(timeId)
             val typeOfCube = databaseTimes.getTypeOfCube(timeId)
-            val number = position + 1
+            val number = position + 1 // index vibes
+
+            //Show pop up window containing the solve information from the database
             showPopupWindow(date, shuffle, timeSolved, typeOfCube, number)
         }
 
@@ -84,11 +95,14 @@ class solves_3x3 : Fragment() {
 
         popupView.startAnimation(formal)
 
+        //Adjusting dimensions of the popup window
         val width = LinearLayout.LayoutParams.MATCH_PARENT
         val height = LinearLayout.LayoutParams.MATCH_PARENT
         val focusable = true
         val popupWindow = PopupWindow(popupView, width, height, focusable)
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+
+
         val test2 = popupView.findViewById<TextView>(R.id.titleText)
         test2.text = "Solve Time: $timeSolved, Number: $number"
         val textView = popupView.findViewById<TextView>(R.id.H_perm_txt)

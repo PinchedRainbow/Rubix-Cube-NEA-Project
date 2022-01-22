@@ -29,6 +29,7 @@ class BackupActivity : AppCompatActivity() {
         val restore: Button = findViewById(R.id.restore)
         val userPFP: ImageView = findViewById(R.id.userPFP)
 
+        //If the user is logged into their Google Account
         if (isLoggedIn()) {
             val account = GoogleSignIn.getLastSignedInAccount(this)
             val credential = GoogleAccountCredential.usingOAuth2(
@@ -54,7 +55,7 @@ class BackupActivity : AppCompatActivity() {
                 progressDialog.setTitle("Uploading to Google Drive")
                 progressDialog.setMessage("Backing up the saved times database")
 
-                if (doesDatabaseExist(this, "times.db")) {
+                if (doesDatabaseExist(this, "solveTimes.db")) {
                     progressDialog.show()
                     mDriveServiceHelper?.createFile("TestFile")?.addOnSuccessListener {
                         progressDialog.dismiss()
@@ -75,7 +76,7 @@ class BackupActivity : AppCompatActivity() {
         restore.setOnClickListener {
             if (isLoggedIn()) {
                 val account = GoogleSignIn.getLastSignedInAccount(this)
-                if (doesDatabaseExist(this, "times.db")) {
+                if (doesDatabaseExist(this, "solveTimes.db")) {
                     Toast.makeText(this, "Already have file!", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Restoring...", Toast.LENGTH_SHORT).show()
@@ -85,10 +86,12 @@ class BackupActivity : AppCompatActivity() {
 
     }
 
+    //Returns true if the user is logged in
     private fun isLoggedIn(): Boolean {
         return GoogleSignIn.getLastSignedInAccount(this) != null
     }
 
+    //Checks if the database exists
     private fun doesDatabaseExist(context: Context, dbName: String): Boolean {
         val dbFile: File = context.getDatabasePath(dbName)
         return dbFile.exists()
